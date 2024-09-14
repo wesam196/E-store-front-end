@@ -1,24 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Users from './views/users.js';
+import DefaultLayout from './Components/DefaultLayout.js';
+import GuestLayout from './Components/GuestLayout.js';
+import UserForm from './views/UserForm.js';
+import Login from './views/login.js';
+import Register from './views/register.js';
+import TestAPI from './views/testAPI.js';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+
+          {/* Routes with DefaultLayout */}
+          <Route path="/" element={<DefaultLayout />}>
+            <Route path="users" element={<Users />} />
+            <Route path="users/new" element={<UserForm key="userCreate" />} />
+            <Route path="users/:id" element={<UserForm key="userUpdate" />} />
+          </Route>
+
+          {/* Routes with GuestLayout */}
+          <Route path="/" element={<GuestLayout />}>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="test" element={<TestAPI/>} />
+          </Route>
+
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
