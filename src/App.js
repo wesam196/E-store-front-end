@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './style/bootstrap-5.3.3-dist/css/bootstrap.css';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Users from './views/users.js';
 import DefaultLayout from './Components/DefaultLayout.js';
@@ -8,10 +9,11 @@ import UserForm from './views/UserForm.js';
 import Login from './views/login.js';
 import Register from './views/register.js';
 import TestAPI from './views/testAPI.js';
-
+import AddProduct from './views/admin/addProduct.js';
 
 function App() {
   return (
+    
     <Router>
       <div className="App">
         <Routes>
@@ -21,16 +23,22 @@ function App() {
             <Route path="users" element={<Users />} />
             <Route path="users/new" element={<UserForm key="userCreate" />} />
             <Route path="users/:id" element={<UserForm key="userUpdate" />} />
+           
           </Route>
+
+          <Route path="admin/addproduct" element={<AddProduct />} />
+
 
           {/* Routes with GuestLayout */}
           <Route path="/" element={<GuestLayout />}>
+          <Route path="test" element={<TestAPI/>} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route path="test" element={<TestAPI/>} />
           </Route>
 
         </Routes>
+
+  
       </div>
     </Router>
   );

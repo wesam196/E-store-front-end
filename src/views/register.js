@@ -5,10 +5,10 @@ import axiosClient from "../axiosClient";
 import { useStateContext } from "../contexts/contextprovider";
 
 export default function Register() {
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [password_confirmation, setPasswordCon] = useState();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [password_confirmation, setPasswordCon] = useState("");
 
 
     const { setUser, setToken } = useStateContext();
@@ -62,8 +62,8 @@ export default function Register() {
 
 
                     <input type="submit"/>
-                    <p class="message">
-                        Already Have An Account? <a href="{{ url('/login') }}">Login</a>
+                    <p className="message">
+                        Already Have An Account? <a href="{ ('/login') }">Login</a>
                     </p>
                 </form>
                 <p>{name} - {email} - {password}</p>

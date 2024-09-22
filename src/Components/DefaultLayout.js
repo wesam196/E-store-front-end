@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import axiosClient from "../axiosClient";
 import { useStateContext } from "../contexts/contextprovider";
+import Navigation from "./navigation";
+import Products from "../views/products";
 
 export default function DefaultLayout() {
     const { user, token, setUser, setToken } = useStateContext();
@@ -39,7 +41,7 @@ export default function DefaultLayout() {
             <div className="content">
                 <header>
                     <div>
-                        Header
+                    <Navigation/>
                     </div>
                     <div>
                         {user ? user.name : 'Loading...'}
@@ -47,6 +49,8 @@ export default function DefaultLayout() {
                     </div>
                 </header>
                 <main>
+
+                    <Products/>
                     <Outlet />
                 </main>
             </div>
