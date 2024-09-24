@@ -14,7 +14,7 @@ const AddProduct = () => {
     
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
-    const [category,setCategory] = useState("");
+    const [category,setCategory] = useState([]);
     const [price,setPrice] = useState("");
     const [discount,setDiscount] = useState("");
     const [image,setImage] = useState(null);
@@ -65,8 +65,38 @@ const AddProduct = () => {
                 // Handle error (optional)
                 console.error("There was an error fetching the data:", error);
             });
-    }, [info]);
+    
+           
+    
+          }, [info]);
 
+
+    useEffect(()=>{
+      axiosClient.get("/categoryShow")
+      .then(({ data  }) => {
+        setCategory(data );
+      })
+      .catch(error => {
+          // Handle error (optional)
+          console.error("There was an error fetching the data:", error);
+      });
+    },[])
+
+
+    const del = (id) => {
+      axiosClient.post('/deleteProduct/'+ id)
+      .then(({ data2 }) => {
+        setCategory(data2);
+      })
+      .catch(error => {
+          // Handle error (optional)
+          console.error("There was an error fetching the data:", error);
+      });
+
+    }
+    
+
+    console.log(category)
 
     return (  
         <div>add product page
@@ -93,27 +123,29 @@ const AddProduct = () => {
           {info.map((item) => (
             <tr key={item.id}>
               <td>
-                <img
-                  src={`../product/${item.image}`}
-                  alt={item.image}
-                  className="img-fluid"
-                  style={{ width: "100px" }}
-                />
+              <img
+            src={`http://192.168.0.184:8000/product/${item.image}`}
+            
+            className="card-img-top product-image"
+            alt={item.title}
+          />
               </td>
               <td>{item.title}</td>
               <td>{item.description}</td>
               <td>{item.price} SR</td>
               <td>{item.category}</td>
               <td>{item.discount}</td>
-              <td>
-                <Link to={`/product_details/${item.id}`} className="btn btn-primary">
+              <td> 
+                <Link to={`/productupdate/${item.id}`} className="btn btn-primary">
                   Read More
                 </Link>
               </td>
               <td>
-              <Link to={`/product_details/${item.id}`} className="btn btn-danger">
+              <button className="btn btn-danger" onClick={()=>{
+                del(item.id)
+              }}>
                   Delete
-                </Link>
+                </button>
               </td>
               
             </tr>
@@ -133,19 +165,28 @@ const AddProduct = () => {
                 
                 <label htmlFor="title">Title</label>
                 <input type="text"  name="title"  value={title} id="title" onChange={(e)=> setTitle(e.target.value)}/>
-                
+                <br />
                 <label htmlFor="description">Description</label>
                 <input type="text"  name="description"   value={description} id="description" onChange={(e)=> setDescription(e.target.value)}/>
+                <br />
+                
                 
                 <label htmlFor="category">Category</label>
-                <input type="text"   name="category" value={category} id="category" onChange={(e)=> setCategory(e.target.value)}/>
-
+                <select value={category} onChange={(e)=> setCategory(e.target.value)} >
+                {category.map((item) => (
+                  
+                    <option value={item.category} >{item.category}</option>
+                ))}
+                </select>
+                
+                
+                <br />
                 <label htmlFor="price">Price</label> 
-                <input type="text"   name="price" value={price} id="price" onChange={(e)=> setPrice(e.target.value)}/>
-                
+                <input type="number"   name="price" value={price} id="price" onChange={(e)=> setPrice(e.target.value)}/>
+                <br />
                 <label htmlFor="discount">Discount</label>
-                <input type="text"    name="discount" value={discount} id="discount" onChange={(e)=> setDiscount(e.target.value)}/>
-                
+                <input type="number"    name="discount" value={discount} id="discount" onChange={(e)=> setDiscount(e.target.value)}/>
+                <br />
                 <label htmlFor="image">Image</label>
                 <input
                     type="file"
@@ -153,7 +194,7 @@ const AddProduct = () => {
                     id="image"
                     onChange={(e) => setImage(e.target.files[0])}
                 />
-                            
+                         <br />   
                     <input type="submit"/>
                     
                 </form>

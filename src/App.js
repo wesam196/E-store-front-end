@@ -10,6 +10,7 @@ import Login from './views/login.js';
 import Register from './views/register.js';
 import TestAPI from './views/testAPI.js';
 import AddProduct from './views/admin/addProduct.js';
+import ProductUpdate from './views/admin/productUpdate.js';
 
 function App() {
   return (
@@ -27,10 +28,11 @@ function App() {
           </Route>
 
           <Route path="admin/addproduct" element={<AddProduct />} />
-
+          <Route path='/productupdate/:id' element={ <ProductUpdate/>  }/>
 
           {/* Routes with GuestLayout */}
           <Route path="/" element={<GuestLayout />}>
+
           <Route path="test" element={<TestAPI/>} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
