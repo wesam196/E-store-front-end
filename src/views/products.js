@@ -32,7 +32,7 @@ const Products = () => {
           {    console.log(item.image)       }
           {console.log(item)}
           <img
-            src={`http://127.0.0.1:8000/product/${item.image}`}
+            src={`http://192.168.100.60:8000/product/${item.image}`}
             
             className="card-img-top product-image"
             alt={item.title}

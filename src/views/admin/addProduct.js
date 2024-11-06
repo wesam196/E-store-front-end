@@ -11,10 +11,12 @@ const AddProduct = () => {
 
 
     const [info, setInfo] = useState(""); // Initialize with default value
-    
+    const [info2, setInfo2] = useState([]); // Initialize with default value
+
+
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
-    const [category,setCategory] = useState([]);
+    const [category,setCategory] = useState("");
     const [price,setPrice] = useState("");
     const [discount,setDiscount] = useState("");
     const [image,setImage] = useState(null);
@@ -41,7 +43,6 @@ const AddProduct = () => {
                 const response = err.response;
                 if (response) {
                     if (response.status === 422) {
-                        console.log("response.data.errors");
                         console.log(response.data.errors);
                     } else {
                         console.error('Error status:', response.status);
@@ -74,7 +75,7 @@ const AddProduct = () => {
     useEffect(()=>{
       axiosClient.get("/categoryShow")
       .then(({ data  }) => {
-        setCategory(data );
+        setInfo2(data );
       })
       .catch(error => {
           // Handle error (optional)
@@ -96,7 +97,6 @@ const AddProduct = () => {
     }
     
 
-    console.log(category)
 
     return (  
         <div>add product page
@@ -124,7 +124,7 @@ const AddProduct = () => {
             <tr key={item.id}>
               <td>
               <img
-            src={`http://192.168.0.184:8000/product/${item.image}`}
+            src={`http://192.168.100.60:8000/product/${item.image}`}
             
             className="card-img-top product-image"
             alt={item.title}
@@ -173,7 +173,7 @@ const AddProduct = () => {
                 
                 <label htmlFor="category">Category</label>
                 <select value={category} onChange={(e)=> setCategory(e.target.value)} >
-                {category.map((item) => (
+                {info2.map((item) => (
                   
                     <option value={item.category} >{item.category}</option>
                 ))}
