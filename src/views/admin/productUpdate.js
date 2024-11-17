@@ -51,6 +51,7 @@ const ProductUpdate = () => {
 
 
       const submit = (ev) => {
+        
         ev.preventDefault();
        
         
@@ -86,6 +87,7 @@ const ProductUpdate = () => {
                     console.error('Error message:', err.message);
                 }
             });
+            
     };
 
 

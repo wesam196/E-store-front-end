@@ -137,7 +137,7 @@ const AddProduct = () => {
               <td>{item.discount}</td>
               <td> 
                 <Link to={`/productupdate/${item.id}`} className="btn btn-primary">
-                  Read More
+                  update
                 </Link>
               </td>
               <td>

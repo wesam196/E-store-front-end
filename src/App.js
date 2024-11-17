@@ -11,6 +11,8 @@ import Register from './views/register.js';
 import TestAPI from './views/testAPI.js';
 import AddProduct from './views/admin/addProduct.js';
 import ProductUpdate from './views/admin/productUpdate.js';
+import AddCategory from './views/admin/addCategory.js';
+import CategoryUpdate from './views/admin/categoryUpdate.js';
 
 function App() {
   return (
@@ -28,7 +30,9 @@ function App() {
           </Route>
 
           <Route path="admin/addproduct" element={<AddProduct />} />
+          <Route path="admin/addcategory" element={<AddCategory />} />
           <Route path='/productupdate/:id' element={ <ProductUpdate/>  }/>
+          <Route path='/categoryUpdate/:id' element={ <CategoryUpdate/>  }/>
 
           {/* Routes with GuestLayout */}
           <Route path="/" element={<GuestLayout />}>
