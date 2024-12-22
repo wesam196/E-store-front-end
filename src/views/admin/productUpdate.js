@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../../axiosClient";
 import { useParams } from "react-router-dom";
+import Navigation from "../../Components/navigation";
 
 const ProductUpdate = () => {
 
@@ -26,7 +27,6 @@ const ProductUpdate = () => {
           setPrice(data.price);
           setDiscount(data.discount);
           setImage(data.image);
-          console.log("this is image first: "+ image )
           setCategory(data.category);
           
           
@@ -63,7 +63,8 @@ const ProductUpdate = () => {
             formData.append("category", category);
             formData.append("price", price);
             formData.append("discount", discount);
-            if(typeof image === 'object'){
+            
+            if(typeof (image) === 'object'){
             formData.append("image", image);
             }
             
@@ -97,6 +98,7 @@ const ProductUpdate = () => {
     return (  
 
         <div>
+            <Navigation/>
             <h1>here we can update our products</h1>
             
 
@@ -134,8 +136,9 @@ const ProductUpdate = () => {
                 <input type="number"    name="discount" value={discount} id="discount" onChange={(e)=> setDiscount(e.target.value)}/>
                 <br />
                 <label htmlFor="image">Image</label>
+               
                 <img
-            src={`http://172.20.10.7:8000/product/${image}`}
+            src={`http://192.168.100.38:8000/product/${image}`}
             
             className="card-img-top product-image"
             alt={"image"}

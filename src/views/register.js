@@ -63,7 +63,7 @@ export default function Register() {
 
                     <input type="submit"/>
                     <p className="message">
-                        Already Have An Account? <a href="{ ('/login') }">Login</a>
+                        Already Have An Account? <Link to="/login">Login</Link>
                     </p>
                 </form>
                 <p>{name} - {email} - {password}</p>

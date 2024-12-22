@@ -123,8 +123,9 @@ const AddProduct = () => {
           {info.map((item) => (
             <tr key={item.id}>
               <td>
+                
               <img
-            src={`http://192.168.100.60:8000/product/${item.image}`}
+            src={`http://192.168.100.38:8000/product/${item.image}`}
             
             className="card-img-top product-image"
             alt={item.title}

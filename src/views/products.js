@@ -22,7 +22,6 @@ const Products = () => {
         <div>
             <h1>here products will show</h1>
             
-
             
             {info.length > 0 ? (
   <div className="container">
@@ -32,7 +31,7 @@ const Products = () => {
           {    console.log(item.image)       }
           {console.log(item)}
           <img
-            src={`http://192.168.100.60:8000/product/${item.image}`}
+            src={`http://192.168.100.38:8000/product/${item.image}`}
             
             className="card-img-top product-image"
             alt={item.title}

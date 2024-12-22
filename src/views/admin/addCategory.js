@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../../axiosClient";
 import { Link } from "react-router-dom";
+import Navigation from "../../Components/navigation";
 
 
 const AddCategory = () => {
@@ -77,7 +78,11 @@ const AddCategory = () => {
 
 
     return (  
-        <div>add category page
+
+      
+        <div>
+          <Navigation/>
+          add category page
 
 
         {info.length > 0 ? (

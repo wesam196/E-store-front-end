@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosClient from "../../axiosClient";
+import Navigation from "../../Components/navigation";
 
 
 
@@ -57,6 +58,7 @@ const CategoryUpdate = () => {
       }
 
     return ( <div>
+        <Navigation/>
         <h1>category update</h1>
 
         <form onSubmit={submit} encType="multipart/form-data">

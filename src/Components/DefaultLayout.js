@@ -23,9 +23,9 @@ export default function DefaultLayout() {
     }, [token]); // Only run the effect when the token changes
 
     // Conditionally render part of the UI instead of calling return early
-    if (!token) {
+   /* if (!token) {
         return <Navigate to='/login' />;
-    }
+    }*/
 
     const onLogout = (ev) => {
         ev.preventDefault();
