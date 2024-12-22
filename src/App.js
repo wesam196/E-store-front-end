@@ -13,6 +13,7 @@ import AddProduct from './views/admin/addProduct.js';
 import ProductUpdate from './views/admin/productUpdate.js';
 import AddCategory from './views/admin/addCategory.js';
 import CategoryUpdate from './views/admin/categoryUpdate.js';
+import ProductDetails from './views/productdetails.js';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="admin/addcategory" element={<AddCategory />} />
           <Route path='/productupdate/:id' element={ <ProductUpdate/>  }/>
           <Route path='/categoryUpdate/:id' element={ <CategoryUpdate/>  }/>
+          <Route path='/productdetails/:id' element={ <ProductDetails/>  }/>
 
           {/* Routes with GuestLayout */}
           <Route path="/" element={<GuestLayout />}>
