@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
+import { Link } from "react-router-dom";
 
 const ProductDetails = () => {
 
@@ -72,19 +73,49 @@ const ProductDetails = () => {
 
 
             <div className="col-md-6">
-                <h2>title</h2>
+                <h2>{info.title}</h2>
                 <h2>review</h2>
-                <h2>price</h2>
+            {  
+            
+            info.discount != 0 && 
+            
+            <h2 > before discount <s>{info.price}</s>
+             <br />
+              
+              Now <t></t>
+              {(info.price) - (info.discount)}
+              
+              </h2>
+            
+            
+            } 
+            
+            { info.discount == 0 && 
+                <h2>{info.price}</h2>
+            }
+                
+
                 <h2>parameters</h2>
                 <div className="row">
-                <h2 className="col-md-9">add to cart</h2>
-                <h2 className="col-md-3">favourite</h2>
+                    <Link to={"#"} className="btn btn-light col-md-9"> 
+                        
+                        Add to Cart 
+                    <i className="fas fa-shopping-cart">
+                        
+                    </i>
+                    
+                     </Link>
+                    
+                    <Link to={"#"} className="btn btn-outline-danger col-md-3">
+                        <i className="fa fa-heart"></i> 
+                    </Link>
+                
                 </div>
             </div>
             </div>
 
 
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
             <div className="col-md-8">
                 <h2>details & review with filters</h2>
             </div>
